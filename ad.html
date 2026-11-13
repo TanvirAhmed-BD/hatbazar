@@ -143,7 +143,7 @@ gtag('config', 'G-D207HZJB77');
         '<div class="dmeta"><span>📍 ' + esc(HB.adLocLabel(ad)) + '</span><span>' + esc(ad.cond) + '</span>' + (date ? '<span>' + date + '</span>' : '') + '</div>' +
         '<div class="spec">' +
           '<div><small>Category</small><b>' + esc(HB.catName(ad.cat)) + '</b></div>' +
-          '<div><small>Subcategory</small><b>' + (sl ? esc(sl) : '—') + '</b></div>' +
+          (sl ? '<div><small>Subcategory</small><b>' + esc(sl) + '</b></div>' : '') +
           '<div><small>Condition</small><b>' + esc(ad.cond) + '</b></div>' +
           '<div><small>Location</small><b>' + esc(HB.adLocLabel(ad)) + '</b></div>' +
         '</div>' +
@@ -193,9 +193,9 @@ gtag('config', 'G-D207HZJB77');
           '<div style="font-size:14px;font-weight:600;margin-bottom:6px">Delivery এলাকা * <span style="color:var(--muted);font-weight:500">— বিভাগ → জেলা → উপজেলা → ইউনিয়ন</span></div>' +
           '<div class="loc-grid">' +
             '<span class="loc-field">Division বিভাগ *<select id="oDiv"></select></span>' +
-            '<span class="loc-field">District জেলা<input type="search" id="oDistSearch" placeholder="Search district… খুঁজুন" autocomplete="off"><select id="oDist" size="4"></select></span>' +
-            '<span class="loc-field">Upazila উপজেলা<input type="search" id="oUpaSearch" placeholder="Search upazila… খুঁজুন" autocomplete="off"><select id="oUpa" size="4"></select></span>' +
-            '<span class="loc-field">Union ইউনিয়ন<input type="search" id="oUniSearch" placeholder="Search union… খুঁজুন" autocomplete="off"><select id="oUni" size="4"></select></span>' +
+            '<span class="loc-field">District জেলা<input type="search" id="oDistSearch" placeholder="Search district… খুঁজুন" autocomplete="off"><select id="oDist"></select></span>' +
+            '<span class="loc-field">Upazila উপজেলা<input type="search" id="oUpaSearch" placeholder="Search upazila… খুঁজুন" autocomplete="off"><select id="oUpa"></select></span>' +
+            '<span class="loc-field">Union ইউনিয়ন<input type="search" id="oUniSearch" placeholder="Search union… খুঁজুন" autocomplete="off"><select id="oUni"></select></span>' +
           '</div>' +
           '<div class="loc-path" id="oLocPath">No location chosen yet</div>' +
         '</div>' +
