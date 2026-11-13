@@ -174,6 +174,27 @@ gtag('config', 'G-D207HZJB77');
     $('ctaStack').innerHTML =
       '<button class="btn btn-order" id="orderBtn" type="button">🛡️ HatBazar দিয়ে Order করুন</button>' +
       '<div class="safety">🛡 এই order HatBazar নিজে সামলায় — <b>Cash on Delivery</b>: পণ্য হাতে পেয়ে টাকা দিন, কোনো advance লাগবে না।</div>';
+    function extractSizes(desc) {
+      if (!desc) return null;
+      if (/ফ্রি\s*সাইজ|সাইজ\s*-\s*ফ্রি|সাইজের কোন ঝামেলা নেই|free\s*size/i.test(desc)) return null;
+      var m = desc.match(/(?:সাইজ|size)\s*[:：\-]?\s*((?:[0-9০-৯]{2}\s*[-,\/]\s*){1,}[0-9০-৯]{2})/i);
+      if (m) { var t = m[1].split(/[-,\/]/).map(function (x) { return x.trim(); }).filter(Boolean); if (t.length >= 2) return t; }
+      var m2 = desc.match(/\b((?:XXL|XL|L|M|S)(?:\s*[-,\/]\s*(?:XXL|XL|L|M|S)){1,})\b/);
+      if (m2) { var t2 = m2[1].split(/[-,\/]/).map(function (x) { return x.trim(); }).filter(Boolean); if (t2.length >= 2) return t2; }
+      return null;
+    }
+    function extractColors(desc) {
+      if (!desc) return null;
+      var m = desc.match(/(?:কালার|color|colour)\s*[:：]\s*([^\n।]{3,80})/i);
+      if (!m) return null;
+      var t = m[1].split(/[,،\/]/).map(function (x) { return x.trim(); }).filter(function (x) { return x && x.length <= 24 && !/[0-9০-৯]/.test(x); });
+      return t.length >= 2 ? t : null;
+    }
+    var variantHtml = '';
+    var vSizes = extractSizes(ad.description);
+    if (vSizes) variantHtml += '<label>Size — সাইজ *<select id="oSize">' + vSizes.map(function (x) { return '<option>' + esc(x) + '</option>'; }).join('') + '</select></label>';
+    var vColors = extractColors(ad.description);
+    if (vColors) variantHtml += '<label>Color — রং *<select id="oColor">' + vColors.map(function (x) { return '<option>' + esc(x) + '</option>'; }).join('') + '</select></label>';
     var orderHtml =
     '<div class="page-card" id="orderCard">' +
       '<div class="card-head">🛡️ HatBazar দিয়ে Order করুন</div>' +
@@ -189,17 +210,8 @@ gtag('config', 'G-D207HZJB77');
         '</div>' +
         '<label>আপনার নাম *<input required id="oName" maxlength="60" placeholder="e.g. Fatema Begum" autocomplete="name"></label>' +
         '<label>মোবাইল নম্বর *<input required id="oPhone" inputmode="tel" placeholder="01XXXXXXXXX" autocomplete="tel"></label>' +
-        '<div>' +
-          '<div style="font-size:14px;font-weight:600;margin-bottom:6px">Delivery এলাকা * <span style="color:var(--muted);font-weight:500">— বিভাগ → জেলা → উপজেলা → ইউনিয়ন</span></div>' +
-          '<div class="loc-grid">' +
-            '<span class="loc-field">Division বিভাগ *<select id="oDiv"></select></span>' +
-            '<span class="loc-field">District জেলা<input type="search" id="oDistSearch" placeholder="Search district… খুঁজুন" autocomplete="off"><select id="oDist"></select></span>' +
-            '<span class="loc-field">Upazila উপজেলা<input type="search" id="oUpaSearch" placeholder="Search upazila… খুঁজুন" autocomplete="off"><select id="oUpa"></select></span>' +
-            '<span class="loc-field">Union ইউনিয়ন<input type="search" id="oUniSearch" placeholder="Search union… খুঁজুন" autocomplete="off"><select id="oUni"></select></span>' +
-          '</div>' +
-          '<div class="loc-path" id="oLocPath">No location chosen yet</div>' +
-        '</div>' +
-        '<label>সম্পূর্ণ ঠিকানা *<textarea required id="oAddress" placeholder="বাসা/হোল্ডিং, রোড, গ্রাম/মহল্লা, পরিচিত জায়গার নাম — যাতে courier সহজে পৌঁছাতে পারে"></textarea></label>' +
+        variantHtml +
+        '<label>সম্পূর্ণ ঠিকানা *<textarea required id="oAddress" placeholder="বাসা/হোল্ডিং, রোড, গ্রাম/এলাকা, উপজেলা, জেলা — যাতে courier সহজে পৌঁছাতে পারে"></textarea></label>' +
         '<div class="protect-box" style="margin:0"><b>কীভাবে কাজ করে?</b><ul><li>HatBazar আপনার order confirm করবে (Messenger chat-এ)।</li><li>Cash on Delivery — <b style="display:inline;font-size:inherit;margin:0">পণ্য হাতে পেয়ে টাকা দিন</b>, কোনো advance লাগবে না।</li><li>সমস্যা হলে HatBazar-ই সমাধান করবে — seller-কে আলাদা ধরতে হবে না।</li></ul></div>' +
         '<div class="form-err" id="orderErr"></div>' +
         '<button class="btn btn-order" type="submit">✓ Order-এর বিবরণ তৈরি করুন</button>' +
@@ -215,7 +227,6 @@ gtag('config', 'G-D207HZJB77');
     '</div>';
     $('orderRoot').innerHTML = orderHtml;
 
-    var cascade = HB.wireCascade('o', { emptyLabel: '— বিভাগ বেছে নিন —' });
     function qty() {
       var v = parseInt($('oQty').value, 10);
       if (isNaN(v) || v < 1) v = 1;
@@ -239,17 +250,17 @@ gtag('config', 'G-D207HZJB77');
       var name = $('oName').value.trim();
       var phone = $('oPhone').value.trim();
       var addr = $('oAddress').value.trim();
-      var loc = cascade.get();
       if (!name) return fail('আপনার নাম লিখুন।');
       if (!/^01[3-9]\d{8}$/.test(phone)) return fail('সঠিক মোবাইল নম্বর দিন (01XXXXXXXXX — 11 ডিজিট)।');
-      if (!loc.div) return fail('Delivery-র বিভাগ বেছে নিন — জেলা/উপজেলা/ইউনিয়ন পর্যন্ত গেলে courier-এর জন্য সহজ হয়।');
       if (!addr) return fail('সম্পূর্ণ ঠিকানা লিখুন।');
-      var trail = HB.trailFromIds(loc.div, loc.dist, loc.upa, loc.uni);
+      var sizeEl = $('oSize'), colorEl = $('oColor');
       var text = 'ধন্যবাদ, ' + name + '!\n' +
         'পণ্য: ' + ad.title + '\n' +
+        (sizeEl ? 'সাইজ: ' + sizeEl.value + '\n' : '') +
+        (colorEl ? 'রং: ' + colorEl.value + '\n' : '') +
         'পরিমাণ: ' + qty() + ' × ' + HB.fmt(ad.price) + ' = ' + HB.fmt(ad.price * qty()) + ' (delivery charge chat-এ confirm হবে)\n' +
         'মোবাইল: ' + phone + '\n' +
-        'ঠিকানা: ' + addr + (trail ? ' (' + trail + ')' : '');
+        'ঠিকানা: ' + addr;
       $('orderSuccessText').textContent = text;
       $('orderForm').style.display = 'none';
       $('orderSuccess').classList.add('show');
