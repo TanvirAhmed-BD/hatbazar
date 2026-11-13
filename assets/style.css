@@ -412,3 +412,21 @@ footer a.flink:hover{color:#fff;text-decoration:underline}
 .mnav a.on{color:var(--green)}
 .mnav .post-mid{color:var(--accent-dark);font-weight:700}
 .mnav .post-mid .fab{width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;margin-top:-16px;border:3px solid var(--surface);font-size:20px}
+
+/* HatBazar premium category medallions (homepage) */
+.cat-show{padding:26px 0 2px}
+.cat-show-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.cs-line{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(212,175,55,.55),transparent)}
+.cs-title{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#c9a227;font-weight:700;white-space:nowrap}
+.icon-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px 10px}
+.tile{background:none;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:2px 0;font-family:inherit}
+.tile .med{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 32% 28%,#17563a,#0a3520 72%);border:1px solid rgba(212,175,55,.55);box-shadow:0 6px 16px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08);color:#e9c766;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.tile .med svg{width:30px;height:30px}
+.tile .med-all{font-size:21px;font-weight:800;color:#e9c766}
+.tile .tl{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.25;text-align:center}
+.tile small{font-size:11.5px;color:#b28e1e;line-height:1.2}
+.tile:hover .med{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.45),0 0 0 3px rgba(212,175,55,.18)}
+.tile.on .med{background:linear-gradient(145deg,#e9c766,#b8912e);color:#123524;border-color:#e9c766}
+.tile.on .med-all{color:#123524}
+@media (max-width:760px){.icon-grid{grid-template-columns:repeat(4,1fr);gap:18px 6px}.tile .med{width:60px;height:60px}.tile .med svg{width:26px;height:26px}.tile .tl{font-size:12px}}
+@media (max-width:380px){.icon-grid{grid-template-columns:repeat(3,1fr)}}
