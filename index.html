@@ -121,9 +121,9 @@ gtag('config', 'G-D207HZJB77');
       <div class="loc-panel-inline" id="locPanel">
         <div class="loc-grid">
           <span class="loc-field">Division বিভাগ<select id="fDiv"></select></span>
-          <span class="loc-field">District জেলা<input type="search" id="fDistSearch" placeholder="Search district… খুঁজুন" autocomplete="off"><select id="fDist" size="4"></select></span>
-          <span class="loc-field">Upazila উপজেলা<input type="search" id="fUpaSearch" placeholder="Search upazila… খুঁজুন" autocomplete="off"><select id="fUpa" size="4"></select></span>
-          <span class="loc-field">Union ইউনিয়ন<input type="search" id="fUniSearch" placeholder="Search union… খুঁজুন" autocomplete="off"><select id="fUni" size="4"></select></span>
+          <span class="loc-field">District জেলা<input type="search" id="fDistSearch" placeholder="Search district… খুঁজুন" autocomplete="off"><select id="fDist"></select></span>
+          <span class="loc-field">Upazila উপজেলা<input type="search" id="fUpaSearch" placeholder="Search upazila… খুঁজুন" autocomplete="off"><select id="fUpa"></select></span>
+          <span class="loc-field">Union ইউনিয়ন<input type="search" id="fUniSearch" placeholder="Search union… খুঁজুন" autocomplete="off"><select id="fUni"></select></span>
         </div>
         <div class="loc-path" id="fLocPath">All Bangladesh — সারা দেশের বিজ্ঞাপন</div>
         <div class="loc-actions">
@@ -154,6 +154,7 @@ gtag('config', 'G-D207HZJB77');
     </div>
     <p class="result-line" id="resultLine"></p>
     <div class="list-grid" id="listGrid"></div>
+    <div id="loadMoreWrap" style="display:none;text-align:center;margin-top:20px"><button class="btn btn-line" id="loadMoreBtn" type="button" style="padding:0 28px;min-height:44px"></button></div>
     <div class="empty" id="emptyBox" style="display:none">
       <b>কিছু পাওয়া যায়নি — No ads match</b>
       Try a different keyword, category or location.
@@ -302,7 +303,7 @@ gtag('config', 'G-D207HZJB77');
     ADS.forEach(function (a) { if (a.div) counts[a.div] = (counts[a.div] || 0) + 1; });
     $('divGrid').innerHTML = HB.GEO.div.map(function (r) {
       var n = counts[r[0]] || 0;
-      return '<button type="button" data-div="' + r[0] + '"><b>' + esc(r[1]) + ' • ' + esc(r[2]) + '</b><small>' + (n ? n + ' ads' : 'বিজ্ঞাপন দেখুন') + '</small></button>';
+      return '<button type="button" data-div="' + r[0] + '"><b>' + esc(r[1]) + ' • ' + esc(r[2]) + '</b><small>' + (n + ' ads') + '</small></button>';
     }).join('');
     Array.prototype.forEach.call($('divGrid').querySelectorAll('button'), function (b) {
       b.addEventListener('click', function () {
@@ -355,16 +356,37 @@ gtag('config', 'G-D207HZJB77');
     if (state.sort === 'high') out = out.slice().sort(function (a, b) { return b.price - a.price; });
     return out;
   }
+  function filtersActive() {
+    var s = cascade.get();
+    return !!(state.q.trim() || state.cat !== 'all' || state.sub !== 'all' || state.cond !== 'all' || s.div || s.dist || s.upa || s.uni);
+  }
   function renderFeatured() {
+    if (filtersActive()) { $('featured').style.display = 'none'; return; }
     var feat = ADS.filter(function (a) { return a.featured; });
     $('featured').style.display = feat.length ? '' : 'none';
     $('featGrid').innerHTML = feat.map(HB.cardHTML).join('');
   }
+  var PAGE_SIZE = 48, shownCount = PAGE_SIZE, lastSig = '';
   function renderList() {
+    renderFeatured();
     var list = filtered();
+    if (!filtersActive()) list = list.filter(function (a) { return !a.featured; });
+    var sig = JSON.stringify([state, cascade.get(), list.length]);
+    if (sig !== lastSig) { shownCount = PAGE_SIZE; lastSig = sig; }
     $('resultLine').innerHTML = '<b>' + list.length + ' ads found</b>' + (state.cat !== 'all' ? ' in ' + esc(HB.catName(state.cat)) : '') + ' — নতুন বিজ্ঞাপন আগে';
-    $('listGrid').innerHTML = list.map(HB.cardHTML).join('');
+    $('listGrid').innerHTML = list.slice(0, shownCount).map(HB.cardHTML).join('');
     $('emptyBox').style.display = list.length ? 'none' : '';
+    var wrap = $('loadMoreWrap');
+    if (list.length > shownCount) {
+      wrap.style.display = '';
+      $('loadMoreBtn').textContent = 'আরো দেখুন — আরো ' + (list.length - shownCount) + 'টি বিজ্ঞাপন';
+    } else { wrap.style.display = 'none'; }
+    $('loadMoreBtn').onclick = function () {
+      shownCount += PAGE_SIZE;
+      $('listGrid').innerHTML = list.slice(0, shownCount).map(HB.cardHTML).join('');
+      if (list.length > shownCount) { $('loadMoreBtn').textContent = 'আরো দেখুন — আরো ' + (list.length - shownCount) + 'টি বিজ্ঞাপন'; }
+      else { wrap.style.display = 'none'; }
+    };
   }
   function renderStats() {
     var cats = {};
@@ -375,7 +397,7 @@ gtag('config', 'G-D207HZJB77');
     $('statUnions').textContent = HB.GEO.uni.length.toLocaleString('en-IN');
   }
   function renderFooterCats() {
-    $('footCats').innerHTML = HB.CATEGORIES.slice(0, 8).map(function (c) {
+    $('footCats').innerHTML = HB.CATEGORIES.map(function (c) {
       return '<li><a class="flink" href="index.html?cat=' + c.id + '">' + esc(c.name) + ' • ' + esc(c.bn) + '</a></li>';
     }).join('');
   }
@@ -435,17 +457,16 @@ gtag('config', 'G-D207HZJB77');
   if (params.get('cat') && HB.catObj(params.get('cat'))) state.cat = params.get('cat');
   if (params.get('sub')) state.sub = params.get('sub');
 
+  function applyDivParam() {
+    var dv = params.get('div');
+    if (dv && HB.DIV_BY_ID[Number(dv)]) cascade.set({ div: Number(dv) });
+  }
+  ADS = fallbackAds();
+  start();
+  applyDivParam();
   HB.fetchLiveAds(500).then(function (rows) {
-    ADS = rows.length ? rows : fallbackAds();
-    start();
-    var dv = params.get('div');
-    if (dv && HB.DIV_BY_ID[Number(dv)]) cascade.set({ div: Number(dv) });
-  }).catch(function () {
-    ADS = fallbackAds();
-    start();
-    var dv = params.get('div');
-    if (dv && HB.DIV_BY_ID[Number(dv)]) cascade.set({ div: Number(dv) });
-  });
+    if (rows.length) { ADS = rows; start(); applyDivParam(); }
+  }).catch(function () { /* fallback already rendered */ });
 })();
 </script>
 </body>
