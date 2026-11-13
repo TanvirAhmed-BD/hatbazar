@@ -66,8 +66,6 @@ gtag('config', 'G-D207HZJB77');
     <div class="hero-stats">
       <div><b id="statAds">–</b><small>Live ads • লাইভ বিজ্ঞাপন</small></div>
       <div><b id="statCats">–</b><small>Categories with ads • ক্যাটাগরি</small></div>
-      <div><b id="statDistricts">–</b><small>Districts covered • জেলা</small></div>
-      <div><b id="statUnions">–</b><small>Unions covered • ইউনিয়ন</small></div>
       <div><b>৳0</b><small>Fee to post • পোস্ট ফ্রি</small></div>
     </div>
     <div class="pop-search">Popular:
@@ -82,33 +80,6 @@ gtag('config', 'G-D207HZJB77');
 </div>
 
 <main class="wrap">
-  <section class="block" id="categories">
-    <div class="sec-head"><h2>Browse Categories <span class="bn">• ক্যাটাগরি</span></h2></div>
-    <p style="margin:-6px 0 12px;color:var(--muted);font-size:14.5px">দিনমজুরের কাজ থেকে কর্পোরেট চাকরি, পাইকারি পণ্য থেকে শিশুর জিনিস — <b style="color:var(--ink)">সবকিছুর জন্য এক হাট।</b> Labour to corporate, wholesale to retail — every kind of work and product has a place here.</p>
-    <div class="cat-grid" id="catGrid"></div>
-  </section>
-
-  <section class="block" id="work">
-    <div class="sec-head"><h2>Work for Everyone <span class="bn">• শ্রমিক থেকে কর্পোরেট</span></h2><button id="allJobsBtn">All Jobs →</button></div>
-    <p style="margin:0 0 12px;color:var(--muted);font-size:14.5px">কোনো কাজই ছোট নয় — দিনমজুর, মিস্ত্রি, ড্রাইভার থেকে শুরু করে ম্যানেজার ও এক্সিকিউটিভ পর্যন্ত, সব ধরনের কাজের বিজ্ঞাপন এখানে। যেকোনো একটায় চাপ দিলেই সেই ধরনের কাজগুলো দেখাবে।</p>
-    <div class="ladder">
-      <div class="ladder-row">
-        <div class="ladder-row-head"><b>Jobs • চাকরি</b><span>14 ধরনের কাজ — labour থেকে corporate</span></div>
-        <div class="chips" id="jobLadderChips"></div>
-      </div>
-      <div class="ladder-row">
-        <div class="ladder-row-head"><b>Services • সার্ভিস</b><span>মেরামত থেকে আইটি সেবা — দক্ষ হাতের কাজ</span></div>
-        <div class="chips" id="serviceLadderChips"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="divisions">
-    <div class="sec-head"><h2>Browse by Division <span class="bn">• বিভাগ ধরে খুঁজুন</span></h2><button id="allDivBtn">All Bangladesh →</button></div>
-    <p style="margin:0 0 12px;color:var(--muted);font-size:14.5px">আপনার বিভাগ বেছে নিন — তারপর জেলা, উপজেলা, এমনকি ইউনিয়ন পর্যন্ত গিয়ে কাছের বিজ্ঞাপন খুঁজুন। Pick your division, then narrow down to district, upazila and union.</p>
-    <div class="loc-divs" id="divGrid"></div>
-  </section>
-
   <section class="block" id="featured">
     <div class="sec-head"><h2>Featured Ads <span class="bn">• ফিচার্ড বিজ্ঞাপন</span></h2></div>
     <div class="list-grid" id="featGrid"></div>
@@ -184,13 +155,6 @@ gtag('config', 'G-D207HZJB77');
     </div>
   </section>
 
-  <div class="sell-cta">
-    <div>
-      <h2>Sell on HatBazar — আপনার পণ্যও বিক্রি করুন</h2>
-      <p>Post your ad free — আর চাইলে HatBazar আপনার chat, order confirm আর delivery-ও সামলে দেবে managed service-এ, আপনি শুধু পণ্য পাঠাবেন।</p>
-    </div>
-    <a class="post-btn" href="post.html" style="text-decoration:none;display:inline-flex;align-items:center">+ POST YOUR AD — ফ্রি</a>
-  </div>
 </main>
 
 <footer>
@@ -201,7 +165,6 @@ gtag('config', 'G-D207HZJB77');
       <p>🛡️ Founding Verified Seller: <b style="color:#fff">Tandia Mall</b> — saree, borka, three-piece &amp; bags. Order through HatBazar with Cash on Delivery, delivered all over Bangladesh.</p>
     </div>
     <div><h4>Categories</h4><ul id="footCats"></ul></div>
-    <div><h4>Divisions • বিভাগ</h4><ul id="footLocs"></ul></div>
     <div><h4>HatBazar</h4><ul>
       <li><a class="flink" href="post.html">Post Your Ad — ফ্রি</a></li>
       <li><a class="flink" href="seller.html">My Ads — আমার বিজ্ঞাপন</a></li>
@@ -259,7 +222,7 @@ gtag('config', 'G-D207HZJB77');
   function setCategory(cat, sub) {
     state.cat = cat;
     state.sub = sub || 'all';
-    renderNav(); renderCats(); renderSubFilter(); renderList();
+    renderNav(); renderSubFilter(); renderList();
     document.getElementById('listings').scrollIntoView({ behavior: 'smooth' });
   }
   function renderNav() {
@@ -271,50 +234,6 @@ gtag('config', 'G-D207HZJB77');
     Array.prototype.forEach.call($('catNav').querySelectorAll('button'), function (b) {
       b.addEventListener('click', function () { setCategory(b.getAttribute('data-cat')); });
     });
-  }
-  function renderCats() {
-    var counts = catCounts();
-    $('catGrid').innerHTML = HB.CATEGORIES.map(function (c) {
-      var n = counts[c.id] || 0;
-      return '<div class="cat-card' + (c.isNew ? ' new-cat' : '') + '" data-cat="' + c.id + '" role="button" tabindex="0">' +
-        '<span class="ic">' + HB.catIcon(c.id) + '</span><b>' + esc(c.name) + (c.isNew ? '<span class="new-tag">NEW</span>' : '') + '</b>' +
-        '<small>' + esc(c.bn) + (n ? ' • ' + n + ' ads' : '') + '</small></div>';
-    }).join('');
-    Array.prototype.forEach.call($('catGrid').querySelectorAll('.cat-card'), function (el) {
-      var go = function () { setCategory(el.getAttribute('data-cat')); };
-      el.addEventListener('click', go);
-      el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
-    });
-  }
-  function renderLadders() {
-    function chips(catId) {
-      return (HB.subsFor(catId) || []).map(function (s) {
-        return '<button class="chip" data-cat="' + catId + '" data-sub="' + s.id + '">' + esc(s.en) + ' • ' + esc(s.bn) + '</button>';
-      }).join('');
-    }
-    $('jobLadderChips').innerHTML = chips('jobs');
-    $('serviceLadderChips').innerHTML = chips('services');
-    Array.prototype.forEach.call(document.querySelectorAll('#jobLadderChips .chip, #serviceLadderChips .chip'), function (b) {
-      b.addEventListener('click', function () { setCategory(b.getAttribute('data-cat'), b.getAttribute('data-sub')); });
-    });
-  }
-  function renderDivisions() {
-    var counts = {};
-    ADS.forEach(function (a) { if (a.div) counts[a.div] = (counts[a.div] || 0) + 1; });
-    $('divGrid').innerHTML = HB.GEO.div.map(function (r) {
-      var n = counts[r[0]] || 0;
-      return '<button type="button" data-div="' + r[0] + '"><b>' + esc(r[1]) + ' • ' + esc(r[2]) + '</b><small>' + (n + ' ads') + '</small></button>';
-    }).join('');
-    Array.prototype.forEach.call($('divGrid').querySelectorAll('button'), function (b) {
-      b.addEventListener('click', function () {
-        cascade.set({ div: Number(b.getAttribute('data-div')) });
-        $('locPanel').classList.add('open');
-        document.getElementById('listings').scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-    $('footLocs').innerHTML = HB.GEO.div.map(function (r) {
-      return '<li><a class="flink" href="index.html?div=' + r[0] + '">' + esc(r[1]) + ' • ' + esc(r[2]) + '</a></li>';
-    }).join('');
   }
   function renderSubFilter() {
     var subs = HB.subsFor(state.cat);
@@ -393,8 +312,6 @@ gtag('config', 'G-D207HZJB77');
     ADS.forEach(function (a) { cats[a.cat] = 1; });
     $('statAds').textContent = ADS.length.toLocaleString('en-IN');
     $('statCats').textContent = Object.keys(cats).length;
-    $('statDistricts').textContent = HB.GEO.dist.length;
-    $('statUnions').textContent = HB.GEO.uni.length.toLocaleString('en-IN');
   }
   function renderFooterCats() {
     $('footCats').innerHTML = HB.CATEGORIES.map(function (c) {
@@ -408,10 +325,10 @@ gtag('config', 'G-D207HZJB77');
       b.classList.toggle('on', b.getAttribute('data-cond') === 'all');
     });
     cascade.clear();
-    renderNav(); renderCats(); renderSubFilter(); renderList();
+    renderNav(); renderSubFilter(); renderList();
   }
   function start() {
-    renderNav(); renderCats(); renderLadders(); renderDivisions();
+
     renderSubFilter(); renderFeatured(); renderList(); renderStats(); renderFooterCats(); refreshLocUI();
   }
 
@@ -447,27 +364,3 @@ gtag('config', 'G-D207HZJB77');
       document.getElementById('listings').scrollIntoView({ behavior: 'smooth' });
     });
   });
-  $('allJobsBtn').addEventListener('click', function () { setCategory('jobs'); });
-  $('allDivBtn').addEventListener('click', function () { cascade.clear(); document.getElementById('listings').scrollIntoView({ behavior: 'smooth' }); });
-  $('resetBtn').addEventListener('click', resetAll);
-
-  /* URL params: ?q= ?cat= ?sub= ?div= */
-  var params = new URLSearchParams(location.search);
-  if (params.get('q')) { state.q = params.get('q'); $('q').value = state.q; }
-  if (params.get('cat') && HB.catObj(params.get('cat'))) state.cat = params.get('cat');
-  if (params.get('sub')) state.sub = params.get('sub');
-
-  function applyDivParam() {
-    var dv = params.get('div');
-    if (dv && HB.DIV_BY_ID[Number(dv)]) cascade.set({ div: Number(dv) });
-  }
-  ADS = fallbackAds();
-  start();
-  applyDivParam();
-  HB.fetchLiveAds(500).then(function (rows) {
-    if (rows.length) { ADS = rows; start(); applyDivParam(); }
-  }).catch(function () { /* fallback already rendered */ });
-})();
-</script>
-</body>
-</html>
