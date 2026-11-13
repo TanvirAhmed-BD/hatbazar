@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>Post Your Ad • HatBazar</title>
+<meta name="description" content="HatBazar-এ ফ্রি-তে বিজ্ঞাপন দিন — পণ্য, চাকরি ও সার্ভিস। প্রতিটা বিজ্ঞাপন যাচাই শেষে লাইভ হয়।">
+<link rel="canonical" href="https://tanvirahmed-bd.github.io/hatbazar/post.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HatBazar">
+<meta property="og:title" content="Post Your Ad • HatBazar">
+<meta property="og:description" content="ফ্রি-তে বিজ্ঞাপন দিন — যাচাই শেষে লাইভ হবে।">
+<meta property="og:url" content="https://tanvirahmed-bd.github.io/hatbazar/post.html">
+<meta property="og:image" content="https://tanvirahmed-bd.github.io/hatbazar/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D207HZJB77"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-D207HZJB77');
+</script>
+</head>
+<body>
+
+<div class="topstrip">
+  <div class="wrap">
+    <div>সারা বাংলাদেশে কেনাবেচা — <a href="index.html#listings">সব বিজ্ঞাপন দেখুন</a></div>
+    <div>EN | <span lang="bn">বাংলা</span></div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap header-in">
+    <a class="logo" href="index.html" aria-label="HatBazar home" style="text-decoration:none">
+      <span class="logo-mark">H<span>B</span></span>
+      <span class="logo-text"><b>Hat<em>Bazar</em></b><small>হাটবাজার • Buy &amp; Sell BD</small></span>
+    </a>
+    <form class="searchbar" action="index.html" method="get" role="search">
+      <input name="q" type="search" placeholder="যা খুঁজছেন লিখুন… Search…" aria-label="Search ads">
+      <button class="go" type="submit" aria-label="Search">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+        <span>Search</span>
+      </button>
+    </form>
+    <div class="header-links">
+      <a href="seller.html" style="font-size:14.5px;font-weight:600;color:var(--ink);padding:8px 10px;min-height:44px;display:inline-flex;align-items:center">♡ My Ads</a>
+      <a href="https://m.me/TandiaMall" target="_blank" rel="noopener" style="font-size:14.5px;font-weight:600;color:var(--ink);padding:8px 10px;min-height:44px;display:inline-flex;align-items:center">Chats</a>
+    </div>
+    <a class="post-btn" href="post.html" style="display:inline-flex;align-items:center;text-decoration:none">+ POST YOUR AD</a>
+  </div>
+  <nav class="catnav"><div class="wrap" id="catNav"></div></nav>
+</header>
+
+<div class="page-head">
+  <div class="wrap">
+    <h1>Post Your Ad • বিজ্ঞাপন দিন</h1>
+    <p>ফ্রি-তে বিজ্ঞাপন দিন — মাত্র ২ মিনিটে। জমা দেওয়ার পর টিম ছবি, দাম আর বিবরণ যাচাই করে লাইভ করে — ভুয়া বা ভুল বিজ্ঞাপন প্রকাশ করা হয় না।</p>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="page-card">
+    <form class="post" id="postForm">
+      <div class="frow">
+        <label>আপনার নাম *<input required id="pName" maxlength="60" placeholder="e.g. Karim Uddin" autocomplete="name"></label>
+        <label>মোবাইল নম্বর *<input required id="pPhone" inputmode="tel" placeholder="01XXXXXXXXX" autocomplete="tel"></label>
+      </div>
+      <label>দোকানের নাম (থাকলে)<input id="pShop" maxlength="60" placeholder="e.g. Karim Fashion House"></label>
+      <label>Ad title *<input required id="pTitle" maxlength="70" placeholder="e.g. Georgette Saree — নতুন শাড়ি"></label>
+      <div class="frow">
+        <label>Category *<select required id="pCat"></select></label>
+        <label id="pSubWrap" style="display:none">Subcategory — উপ-ক্যাটাগরি *<select id="pSub"></select></label>
+      </div>
+      <div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:6px">Your location * <span style="color:var(--muted);font-weight:500">— বিভাগ থেকে শুরু করুন, ইউনিয়ন পর্যন্ত যেতে পারেন</span></div>
+        <div class="loc-grid">
+          <span class="loc-field">Division বিভাগ *<select id="pDiv"></select></span>
+          <span class="loc-field">District জেলা<input type="search" id="pDistSearch" placeholder="Search district… খুঁজুন" autocomplete="off"><select id="pDist" size="4"></select></span>
+          <span class="loc-field">Upazila উপজেলা<input type="search" id="pUpaSearch" placeholder="Search upazila… খুঁজুন" autocomplete="off"><select id="pUpa" size="4"></select></span>
+          <span class="loc-field">Union ইউনিয়ন<input type="search" id="pUniSearch" placeholder="Search union… খুঁজুন" autocomplete="off"><select id="pUni" size="4"></select></span>
+        </div>
+        <div class="loc-path" id="pLocPath">No location chosen yet</div>
+      </div>
+      <div class="frow">
+        <label>Price (৳) *<input required id="pPrice" type="number" min="0" step="1" placeholder="e.g. 1490"></label>
+        <label>Condition
+          <select id="pCond"><option>Brand New</option><option>Used</option><option>For Rent</option><option>Job</option></select>
+        </label>
+      </div>
+      <label>Description<textarea id="pDesc" placeholder="পণ্যের বিবরণ লিখুন — size, colour, delivery option…"></textarea></label>
+      <label>Photos (সর্বোচ্চ ৫টি)
+        <span class="photo-pick" id="photoPick">📷 Tap to add photos (optional)<input type="file" id="pPhotos" accept="image/*" multiple hidden><span class="photo-previews" id="photoPrev"></span></span>
+      </label>
+      <div class="form-err" id="postErr"></div>
+      <button class="btn btn-orange" type="submit" id="postSubmit">POST AD — ফ্রি পোস্ট করুন</button>
+      <small style="color:var(--muted)">Submit করলে বিজ্ঞাপনটি HatBazar টিমের কাছে যাচাইয়ের জন্য জমা পড়বে। যাচাই শেষে লাইভ হলে তা সাইটে দেখা যাবে। আপনার ফোন নম্বর সাধারণ বিজ্ঞাপনে প্রকাশ করা হয় না।</small>
+    </form>
+    <div class="success" id="postSuccess">
+      <div class="tick">✓</div>
+      <h3>বিজ্ঞাপন পেয়েছি! Your ad has been received</h3>
+      <p id="successText" style="text-align:left"></p>
+      <p id="photoNote" style="text-align:left;display:none;background:#fdf0cd;border-radius:8px;padding:10px 12px;color:var(--ink)"></p>
+      <a class="btn btn-green" href="https://m.me/TandiaMall" target="_blank" rel="noopener" style="padding:10px 26px;text-decoration:none;display:inline-flex;align-items:center;margin-right:8px">💬 Messenger-এ HatBazar টিম</a>
+      <a class="btn btn-line" href="seller.html" style="padding:10px 26px;text-decoration:none;display:inline-flex;align-items:center">আমার বিজ্ঞাপন দেখুন</a>
+    </div>
+  </div>
+
+  <div class="note-box" style="margin-bottom:22px">
+    <b>🛡️ Verified Seller হতে চান?</b> Verified Seller-দের order, confirmation আর delivery HatBazar নিজে সামলায় — buyer পায় সুরক্ষা, seller পায় সাপ্তাহিক payment গ্যারান্টি (commission প্রযোজ্য, শুধু বিক্রি হলেই)। আবেদন করতে <a href="https://m.me/TandiaMall" target="_blank" rel="noopener">Messenger-এ HatBazar টিমকে</a> মেসেজ করুন — যাচাইয়ের পর Verified ব্যাজ চালু হবে।
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="foot-logo">Hat<em>Bazar</em></div>
+      <p>বাংলাদেশের কেনাবেচার হাট — a classifieds marketplace covering all 8 divisions, 64 districts, 494 upazilas &amp; 4,540 unions of Bangladesh.</p>
+      <p>🛡️ Founding Verified Seller: <b style="color:#fff">Tandia Mall</b> — saree, borka, three-piece &amp; bags. Order through HatBazar with Cash on Delivery, delivered all over Bangladesh.</p>
+    </div>
+    <div><h4>Categories</h4><ul id="footCats"></ul></div>
+    <div><h4>HatBazar</h4><ul>
+      <li><a class="flink" href="post.html">Post Your Ad — ফ্রি</a></li>
+      <li><a class="flink" href="seller.html">My Ads — আমার বিজ্ঞাপন</a></li>
+      <li><a class="flink" href="index.html#verified">Verified Seller</a></li>
+      <li><a class="flink" href="https://m.me/TandiaMall" target="_blank" rel="noopener">Help &amp; contact — Messenger</a></li>
+    </ul></div>
+    <div class="foot-bottom"><span>© 2026 HatBazar — Made in Bangladesh 🇧🇩</span><span>প্রতিটা বিজ্ঞাপন প্রকাশের আগে যাচাই করা হয়</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<nav class="mnav" aria-label="Mobile">
+  <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11 12 3l9 8v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+  <a href="index.html#listings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>Search</a>
+  <a class="post-mid on" href="post.html"><span class="fab">+</span>Post Ad</a>
+  <a href="seller.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.7-10-9.3C.4 8.6 2.3 5 5.7 5c2 0 3.4 1.1 4.3 2.4h4C15 6.1 16.4 5 18.4 5c3.4 0 5.3 3.6 3.6 6.7C19.5 16.3 12 21 12 21z" transform="scale(.92) translate(1,1)"/></svg>My Ads</a>
+  <a href="https://m.me/TandiaMall" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z"/></svg>Chats</a>
+</nav>
+
+<script src="assets/config.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var HB = window.HB, $ = HB.$, esc = HB.esc;
+
+  $('catNav').innerHTML = '<a href="index.html">All — সব</a>' + HB.CATEGORIES.map(function (c) {
+    return '<a href="index.html?cat=' + c.id + '">' + esc(c.name) + '</a>';
+  }).join('');
+  $('footCats').innerHTML = HB.CATEGORIES.slice(0, 8).map(function (c) {
+    return '<li><a class="flink" href="index.html?cat=' + c.id + '">' + esc(c.name) + ' • ' + esc(c.bn) + '</a></li>';
+  }).join('');
+
+  /* category + subcategory */
+  var catSel = $('pCat'), subWrap = $('pSubWrap'), subSel = $('pSub');
+  catSel.innerHTML = '<option value="">— ক্যাটাগরি বেছে নিন —</option>' + HB.CATEGORIES.map(function (c) {
+    return '<option value="' + c.id + '">' + esc(c.name) + ' • ' + esc(c.bn) + '</option>';
+  }).join('');
+  function refreshSub() {
+    var subs = HB.subsFor(catSel.value);
+    if (subs && subs.length) {
+      subWrap.style.display = '';
+      subSel.innerHTML = '<option value="">— ধরন বেছে নিন —</option>' + subs.map(function (s) {
+        return '<option value="' + s.id + '">' + esc(s.en) + ' • ' + esc(s.bn) + '</option>';
+      }).join('');
+    } else {
+      subWrap.style.display = 'none';
+      subSel.innerHTML = '';
+    }
+  }
+  catSel.addEventListener('change', refreshSub);
+  refreshSub();
+
+  var cascade = HB.wireCascade('p', { emptyLabel: '— বিভাগ বেছে নিন —' });
+
+  /* photos */
+  var photoFiles = [];
+  $('pPhotos').addEventListener('change', function () {
+    photoFiles = Array.prototype.slice.call($('pPhotos').files || []).slice(0, 5);
+    $('photoPrev').innerHTML = '';
+    photoFiles.forEach(function (f) {
+      var img = document.createElement('img');
+      img.alt = '';
+      img.src = URL.createObjectURL(f);
+      $('photoPrev').appendChild(img);
+    });
+    if (photoFiles.length) {
+      $('photoPick').firstChild.textContent = '📷 ' + photoFiles.length + 'টি ছবি বেছে নিয়েছেন — বদলাতে আবার চাপ দিন';
+    }
+  });
+
+  function fail(msg) {
+    var err = $('postErr');
+    err.textContent = msg;
+    err.classList.add('show');
+    err.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  $('postForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    $('postErr').classList.remove('show');
+    var name = $('pName').value.trim();
+    var phone = $('pPhone').value.trim();
+    var shop = $('pShop').value.trim();
+    var title = $('pTitle').value.trim();
+    var cat = catSel.value;
+    var subs = HB.subsFor(cat);
+    var sub = (subs && subs.length) ? subSel.value : '';
+    var price = parseInt($('pPrice').value, 10);
+    var cond = $('pCond').value;
+    var desc = $('pDesc').value.trim();
+    var loc = cascade.get();
+
+    if (!name) return fail('আপনার নাম লিখুন।');
+    if (!/^01[3-9]\d{8}$/.test(phone)) return fail('সঠিক মোবাইল নম্বর দিন (01XXXXXXXXX — 11 ডিজিট)।');
+    if (title.length < 5) return fail('বিজ্ঞাপনের title আরেকটু বিস্তারিত লিখুন।');
+    if (!cat) return fail('Category বেছে নিন।');
+    if (subs && subs.length && !sub) return fail('Subcategory (ধরন) বেছে নিন — যাতে সঠিক মানুষ বিজ্ঞাপনটা খুঁজে পায়।');
+    if (isNaN(price) || price < 0) return fail('সঠিক দাম লিখুন (৳)।');
+    if (!loc.div) return fail('আপনার বিভাগ বেছে নিন — জেলা/উপজেলা/ইউনিয়ন পর্যন্ত গেলে buyer-এর জন্য খুঁজে পাওয়া সহজ হয়।');
+
+    var btn = $('postSubmit');
+    btn.disabled = true;
+    btn.textContent = 'জমা হচ্ছে… Submitting';
+
+    var sellerName = shop || name;
+    var trail = HB.trailFromIds(loc.div, loc.dist, loc.upa, loc.uni);
+
+    /* 1) register the seller as 'regular' (RLS allows only that). If the phone is
+       already registered the insert conflicts — that is fine, we just continue. */
+    HB.sbPost('sellers', { name: name, shop_name: shop || null, phone: phone, type: 'regular' })
+      .catch(function () { /* already registered or unavailable — continue */ })
+      .then(function () {
+        /* 2) try photo uploads; failures never block the ad */
+        var urls = [];
+        var failed = 0;
+        var chain = Promise.resolve();
+        photoFiles.forEach(function (f) {
+          chain = chain.then(function () {
+            return HB.uploadPhoto(f, phone).then(function (u) { urls.push(u); }).catch(function () { failed++; });
+          });
+        });
+        return chain.then(function () { return { urls: urls, failed: failed }; });
+      })
+      .then(function (res) {
+        /* 3) insert the ad as pending + unverified (the only insert RLS allows) */
+        return HB.sbPost('ads', {
+          seller_name: sellerName,
+          title: title,
+          category: cat,
+          subcategory: sub || null,
+          price: price,
+          condition: cond,
+          description: desc || null,
+          photos: res.urls,
+          div_id: loc.div, dist_id: loc.dist, upa_id: loc.upa, uni_id: loc.uni,
+          loc_label: trail || null,
+          status: 'pending',
+          verified: false
+        }).then(function () { return res; });
+      })
+      .then(function (res) {
+        HB.saveSubmission({
+          phone: phone, seller_name: sellerName, title: title, price: price,
+          cat: cat, at: new Date().toISOString()
+        });
+        $('successText').innerHTML = 'ধন্যবাদ, ' + esc(name) + '! আপনার বিজ্ঞাপন <b>“' + esc(title) + '”</b> HatBazar টিমের কাছে পৌঁছেছে।<br>' +
+          'ছবি, দাম আর বিবরণ যাচাই শেষে এটি লাইভ হবে — যাচাই ছাড়া কোনো বিজ্ঞাপন প্রকাশ করা হয় না, তাই কিছুটা সময় লাগতে পারে। লাইভ হলে এই সাইটেই আপনার নামে দেখা যাবে; আপডেট জানতে Messenger-এ মেসেজ করুন।';
+        if (photoFiles.length && res.failed > 0) {
+          var note = $('photoNote');
+          note.style.display = '';
+          note.innerHTML = '📷 <b>ছবির নোট:</b> ' + res.failed + 'টি ছবি আপলোড করা যায়নি' + (res.urls.length ? ' (বাকি ' + res.urls.length + 'টি গেছে)' : '') + ' — ছবিগুলো <a href="https://m.me/TandiaMall" target="_blank" rel="noopener">Messenger-এ পাঠিয়ে দিন</a>, টিম বিজ্ঞাপনের সাথে যোগ করে দেবে।';
+        }
+        $('postForm').style.display = 'none';
+        $('postSuccess').classList.add('show');
+        $('postSuccess').scrollIntoView({ behavior: 'smooth' });
+      })
+      .catch(function (err) {
+        btn.disabled = false;
+        btn.textContent = 'POST AD — ফ্রি পোস্ট করুন';
+        fail('দুঃখিত — বিজ্ঞাপনটি এখন সেভ করা যায়নি (' + esc(err.message || 'network error') + ')। আবার চেষ্টা করুন, অথবা বিজ্ঞাপনের বিবরণ Messenger-এ পাঠান — টিম নিজে পোস্ট করে দেবে।');
+      });
+  });
+})();
+</script>
+</body>
+</html>

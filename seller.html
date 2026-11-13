@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>My Ads • HatBazar</title>
+<meta name="description" content="আপনার HatBazar বিজ্ঞাপনগুলো দেখুন — যেগুলো লাইভ আছে আর যেগুলো যাচাইয়ের অপেক্ষায়।">
+<link rel="canonical" href="https://tanvirahmed-bd.github.io/hatbazar/seller.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HatBazar">
+<meta property="og:title" content="My Ads • HatBazar">
+<meta property="og:description" content="আপনার লাইভ ও যাচাই-অপেক্ষমাণ বিজ্ঞাপনগুলো দেখুন।">
+<meta property="og:url" content="https://tanvirahmed-bd.github.io/hatbazar/seller.html">
+<meta property="og:image" content="https://tanvirahmed-bd.github.io/hatbazar/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D207HZJB77"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-D207HZJB77');
+</script>
+</head>
+<body>
+
+<div class="topstrip">
+  <div class="wrap">
+    <div>সারা বাংলাদেশে কেনাবেচা — <a href="index.html#listings">সব বিজ্ঞাপন দেখুন</a></div>
+    <div>EN | <span lang="bn">বাংলা</span></div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap header-in">
+    <a class="logo" href="index.html" aria-label="HatBazar home" style="text-decoration:none">
+      <span class="logo-mark">H<span>B</span></span>
+      <span class="logo-text"><b>Hat<em>Bazar</em></b><small>হাটবাজার • Buy &amp; Sell BD</small></span>
+    </a>
+    <form class="searchbar" action="index.html" method="get" role="search">
+      <input name="q" type="search" placeholder="যা খুঁজছেন লিখুন… Search…" aria-label="Search ads">
+      <button class="go" type="submit" aria-label="Search">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+        <span>Search</span>
+      </button>
+    </form>
+    <div class="header-links">
+      <a href="seller.html" style="font-size:14.5px;font-weight:600;color:var(--ink);padding:8px 10px;min-height:44px;display:inline-flex;align-items:center">♡ My Ads</a>
+      <a href="https://m.me/TandiaMall" target="_blank" rel="noopener" style="font-size:14.5px;font-weight:600;color:var(--ink);padding:8px 10px;min-height:44px;display:inline-flex;align-items:center">Chats</a>
+    </div>
+    <a class="post-btn" href="post.html" style="display:inline-flex;align-items:center;text-decoration:none">+ POST YOUR AD</a>
+  </div>
+  <nav class="catnav"><div class="wrap" id="catNav"></div></nav>
+</header>
+
+<div class="page-head">
+  <div class="wrap">
+    <h1>My Ads • আমার বিজ্ঞাপন</h1>
+    <p>আপনার নাম/দোকানের নাম দিয়ে এখন লাইভ বিজ্ঞাপনগুলো দেখুন — আর এই ডিভাইস থেকে পোস্ট করা বিজ্ঞাপনগুলো যাচাইয়ের কোন ধাপে আছে, তাও।</p>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="page-card">
+    <div class="card-head">🔎 আপনার বিজ্ঞাপন খুঁজুন</div>
+    <form class="post" id="lookupForm">
+      <div class="frow">
+        <label>মোবাইল নম্বর *<input required id="sPhone" inputmode="tel" placeholder="01XXXXXXXXX" autocomplete="tel"></label>
+        <label>আপনার নাম / দোকানের নাম *<input required id="sName" maxlength="60" placeholder="যে নামে বিজ্ঞাপন দিয়েছেন"></label>
+      </div>
+      <div class="form-err" id="lookupErr"></div>
+      <button class="btn btn-orange" type="submit">আমার বিজ্ঞাপন দেখুন</button>
+      <small style="color:var(--muted)">নামটি বিজ্ঞাপন দেওয়ার সময় যেমন দিয়েছিলেন, হুবহু তেমন লিখুন — ওই নামের লাইভ বিজ্ঞাপনগুলোই দেখানো হবে।</small>
+    </form>
+  </div>
+
+  <div id="results" style="display:none">
+    <section class="block" style="padding-top:4px">
+      <div class="sec-head"><h2>এখন লাইভ <span class="bn">• Live ads</span></h2></div>
+      <div class="stack" id="liveList"></div>
+      <div class="empty" id="liveEmpty" style="display:none"><b>এই নামে কোনো লাইভ বিজ্ঞাপন নেই</b>বিজ্ঞাপন যাচাই শেষে লাইভ হলে এখানে দেখা যাবে।</div>
+    </section>
+    <section class="block">
+      <div class="sec-head"><h2>এই ডিভাইস থেকে পোস্ট করা <span class="bn">• Submitted from this device</span></h2></div>
+      <div class="stack" id="pendList"></div>
+      <div class="empty" id="pendEmpty" style="display:none"><b>এই ফোন নম্বরে কোনো জমা পাওয়া যায়নি</b>এই ডিভাইস/ব্রাউজার থেকে পোস্ট করা বিজ্ঞাপনগুলোই এখানে দেখা যায়।</div>
+    </section>
+  </div>
+
+  <div class="note-box" style="margin:0 0 22px">
+    <b>কীভাবে কাজ করে?</b> HatBazar-এ এখনো ফোন-OTP লগইন চালু হয়নি — তাই কারো বিজ্ঞাপন তালিকা অন্য কেউ দেখতে পারে না বলে, লাইভ বিজ্ঞাপন মেলানো হয় <b>seller-এর নাম</b> দিয়ে, আর যাচাই-অপেক্ষমাণ বিজ্ঞাপন দেখা যায় শুধু <b>যে ডিভাইস থেকে পোস্ট করা হয়েছে</b> সেখানেই। অন্য ডিভাইস থেকে পোস্ট করে থাকলে বা নাম বদলে থাকলে <a href="https://m.me/TandiaMall" target="_blank" rel="noopener">Messenger-এ HatBazar টিমকে</a> জানান — টিম আপডেট দিয়ে দেবে।
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="foot-logo">Hat<em>Bazar</em></div>
+      <p>বাংলাদেশের কেনাবেচার হাট — a classifieds marketplace covering all 8 divisions, 64 districts, 494 upazilas &amp; 4,540 unions of Bangladesh.</p>
+      <p>🛡️ Founding Verified Seller: <b style="color:#fff">Tandia Mall</b> — saree, borka, three-piece &amp; bags. Order through HatBazar with Cash on Delivery, delivered all over Bangladesh.</p>
+    </div>
+    <div><h4>Categories</h4><ul id="footCats"></ul></div>
+    <div><h4>HatBazar</h4><ul>
+      <li><a class="flink" href="post.html">Post Your Ad — ফ্রি</a></li>
+      <li><a class="flink" href="seller.html">My Ads — আমার বিজ্ঞাপন</a></li>
+      <li><a class="flink" href="index.html#verified">Verified Seller</a></li>
+      <li><a class="flink" href="https://m.me/TandiaMall" target="_blank" rel="noopener">Help &amp; contact — Messenger</a></li>
+    </ul></div>
+    <div class="foot-bottom"><span>© 2026 HatBazar — Made in Bangladesh 🇧🇩</span><span>প্রতিটা বিজ্ঞাপন প্রকাশের আগে যাচাই করা হয়</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<nav class="mnav" aria-label="Mobile">
+  <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11 12 3l9 8v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+  <a href="index.html#listings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>Search</a>
+  <a class="post-mid" href="post.html"><span class="fab">+</span>Post Ad</a>
+  <a class="on" href="seller.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.7-10-9.3C.4 8.6 2.3 5 5.7 5c2 0 3.4 1.1 4.3 2.4h4C15 6.1 16.4 5 18.4 5c3.4 0 5.3 3.6 3.6 6.7C19.5 16.3 12 21 12 21z" transform="scale(.92) translate(1,1)"/></svg>My Ads</a>
+  <a href="https://m.me/TandiaMall" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z"/></svg>Chats</a>
+</nav>
+
+<script src="assets/config.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var HB = window.HB, $ = HB.$, esc = HB.esc;
+
+  $('catNav').innerHTML = '<a href="index.html">All — সব</a>' + HB.CATEGORIES.map(function (c) {
+    return '<a href="index.html?cat=' + c.id + '">' + esc(c.name) + '</a>';
+  }).join('');
+  $('footCats').innerHTML = HB.CATEGORIES.slice(0, 8).map(function (c) {
+    return '<li><a class="flink" href="index.html?cat=' + c.id + '">' + esc(c.name) + ' • ' + esc(c.bn) + '</a></li>';
+  }).join('');
+
+  /* prefill from the latest submission on this device */
+  var subs = HB.getSubmissions();
+  if (subs.length) {
+    var last = subs[subs.length - 1];
+    $('sPhone').value = last.phone || '';
+    $('sName').value = last.seller_name || '';
+  }
+
+  function adRow(ad) {
+    var img = (ad.photos && ad.photos.length)
+      ? '<img src="' + esc(ad.photos[0]) + '" alt="">'
+      : '';
+    return '<div class="myad">' + img +
+      '<span><span class="t">' + esc(ad.title) + '</span><br><span class="m">' + HB.fmt(ad.price) + ' • ' + esc(HB.catName(ad.cat)) + ' • 📍 ' + esc(HB.adLocLabel(ad)) + '</span></span>' +
+      '<span class="st"><a class="live-tag" href="' + HB.adHref(ad) + '" style="text-decoration:none">● LIVE — দেখুন</a></span></div>';
+  }
+  function pendRow(s) {
+    var when = s.at ? HB.fmtDate(s.at) : '';
+    return '<div class="myad"><span><span class="t">' + esc(s.title) + '</span><br><span class="m">' + HB.fmt(s.price) + ' • ' + esc(HB.catName(s.cat)) + (when ? ' • জমা: ' + when : '') + '</span></span>' +
+      '<span class="st"><span class="pend-tag">যাচাই চলছে</span></span></div>';
+  }
+
+  $('lookupForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var err = $('lookupErr');
+    err.classList.remove('show');
+    var phone = $('sPhone').value.trim();
+    var name = $('sName').value.trim();
+    if (!/^01[3-9]\d{8}$/.test(phone)) {
+      err.textContent = 'সঠিক মোবাইল নম্বর দিন (01XXXXXXXXX — 11 ডিজিট)।';
+      err.classList.add('show');
+      return;
+    }
+    if (!name) {
+      err.textContent = 'আপনার নাম / দোকানের নাম লিখুন।';
+      err.classList.add('show');
+      return;
+    }
+    $('results').style.display = '';
+    $('liveList').innerHTML = '<div class="note-box">খুঁজছি…</div>';
+    $('liveEmpty').style.display = 'none';
+
+    function showLive(ads) {
+      $('liveList').innerHTML = ads.map(adRow).join('');
+      $('liveEmpty').style.display = ads.length ? 'none' : '';
+      $('liveList').style.display = ads.length ? '' : 'none';
+    }
+    HB.fetchLiveAdsBySeller(name).then(function (ads) {
+      if (ads.length) { showLive(ads); return; }
+      /* DB has no live ads for this name (or is not seeded yet) — also check the
+         built-in set so the founding seller's ads still show pre-seed. */
+      HB.sbGet('ads?status=eq.live&select=id&limit=1').then(function (rows) {
+        if (!rows.length) {
+          var fb = (window.HB_FALLBACK_ADS || [])
+            .filter(function (a) { return (a.seller_name || '').toLowerCase() === name.toLowerCase(); })
+            .map(HB.normalizeFallback);
+          showLive(fb);
+        } else showLive([]);
+      }).catch(function () { showLive([]); });
+    }).catch(function () {
+      var fb = (window.HB_FALLBACK_ADS || [])
+        .filter(function (a) { return (a.seller_name || '').toLowerCase() === name.toLowerCase(); })
+        .map(HB.normalizeFallback);
+      showLive(fb);
+    });
+
+    var mine = HB.getSubmissions().filter(function (s) { return s.phone === phone; });
+    $('pendList').innerHTML = mine.map(pendRow).join('');
+    $('pendEmpty').style.display = mine.length ? 'none' : '';
+    $('pendList').style.display = mine.length ? '' : 'none';
+    $('results').scrollIntoView({ behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>
