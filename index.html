@@ -328,7 +328,7 @@ gtag('config', 'G-D207HZJB77');
     renderNav(); renderSubFilter(); renderList();
   }
   function start() {
-
+    renderNav();
     renderSubFilter(); renderFeatured(); renderList(); renderStats(); renderFooterCats(); refreshLocUI();
   }
 
@@ -364,3 +364,25 @@ gtag('config', 'G-D207HZJB77');
       document.getElementById('listings').scrollIntoView({ behavior: 'smooth' });
     });
   });
+  $('resetBtn').addEventListener('click', resetAll);
+
+  /* URL params: ?q= ?cat= ?sub= ?div= */
+  var params = new URLSearchParams(location.search);
+  if (params.get('q')) { state.q = params.get('q'); $('q').value = state.q; }
+  if (params.get('cat') && HB.catObj(params.get('cat'))) state.cat = params.get('cat');
+  if (params.get('sub')) state.sub = params.get('sub');
+
+  function applyDivParam() {
+    var dv = params.get('div');
+    if (dv && HB.DIV_BY_ID[Number(dv)]) cascade.set({ div: Number(dv) });
+  }
+  ADS = fallbackAds();
+  start();
+  applyDivParam();
+  HB.fetchLiveAds(500).then(function (rows) {
+    if (rows.length) { ADS = rows; start(); applyDivParam(); }
+  }).catch(function () { /* fallback already rendered */ });
+})();
+</script>
+</body>
+</html>
