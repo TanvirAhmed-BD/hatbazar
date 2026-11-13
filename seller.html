@@ -105,7 +105,7 @@ gtag('config', 'G-D207HZJB77');
       <div class="foot-chips"><span>🚚 সারা দেশে Cash on Delivery</span><span>🛡️ Verified Seller সুবিধা</span><span>🎯 Union পর্যন্ত location</span></div>
       <p>🛡️ Founding Verified Seller: <b style="color:#fff">Tandia Mall</b> — saree, borka, three-piece &amp; bags. Order through HatBazar with Cash on Delivery, delivered all over Bangladesh.</p>
     </div>
-    <div><h4>Categories — ক্যাটাগরি</h4><ul class="foot-cats">
+    <div><h4>Categories — ক্যাটাগরি</h4><ul class="foot-cats" id="footCats">
       <li><a class="flink" href="index.html">Mobile Phones • মোবাইল</a></li>
       <li><a class="flink" href="index.html">Electronics • ইলেকট্রনিক্স</a></li>
       <li><a class="flink" href="index.html">Vehicles • যানবাহন</a></li>
@@ -162,7 +162,7 @@ gtag('config', 'G-D207HZJB77');
   $('catNav').innerHTML = '<a href="index.html">All — সব</a>' + HB.CATEGORIES.map(function (c) {
     return '<a href="index.html?cat=' + c.id + '">' + esc(c.name) + '</a>';
   }).join('');
-  $('footCats').innerHTML = HB.CATEGORIES.slice(0, 8).map(function (c) {
+  var fcEl = $('footCats'); if (fcEl && !fcEl.children.length) fcEl.innerHTML = HB.CATEGORIES.slice(0, 8).map(function (c) {
     return '<li><a class="flink" href="index.html?cat=' + c.id + '">' + esc(c.name) + ' • ' + esc(c.bn) + '</a></li>';
   }).join('');
 
