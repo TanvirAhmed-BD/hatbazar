@@ -430,3 +430,15 @@ footer a.flink:hover{color:#fff;text-decoration:underline}
 .tile.on .med-all{color:#123524}
 @media (max-width:760px){.icon-grid{grid-template-columns:repeat(4,1fr);gap:18px 6px}.tile .med{width:60px;height:60px}.tile .med svg{width:26px;height:26px}.tile .tl{font-size:12px}}
 @media (max-width:380px){.icon-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* HatBazar hero slideshow */
+.hero{position:relative;overflow:hidden}
+.hero-slides{position:absolute;inset:0;z-index:0}
+.hero-slides .hs{position:absolute;inset:0;background-size:cover;background-position:center 38%;opacity:0;animation:heroFade 24s linear infinite}
+.hero-slides .hs1{background-image:url('hero-1.jpg')}
+.hero-slides .hs2{background-image:url('hero-2.jpg');animation-delay:8s}
+.hero-slides .hs3{background-image:url('hero-3.jpg');animation-delay:16s}
+.hero-slides::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(5,42,23,.90) 25%,rgba(5,42,23,.66) 60%,rgba(5,42,23,.42) 100%)}
+@keyframes heroFade{0%{opacity:0}5%{opacity:1}33.33%{opacity:1}38.33%{opacity:0}100%{opacity:0}}
+.hero>.wrap{position:relative;z-index:1}
+@media (prefers-reduced-motion: reduce){.hero-slides .hs{animation:none}.hero-slides .hs1{opacity:1}}
