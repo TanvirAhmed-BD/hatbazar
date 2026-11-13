@@ -56,7 +56,6 @@ gtag('config', 'G-D207HZJB77');
     </div>
     <a class="post-btn" href="post.html" style="display:inline-flex;align-items:center;text-decoration:none">+ POST YOUR AD</a>
   </div>
-  <nav class="catnav"><div class="wrap" id="catNav"></div></nav>
 </header>
 
 <div class="hero">
@@ -80,6 +79,10 @@ gtag('config', 'G-D207HZJB77');
 </div>
 
 <main class="wrap">
+  <section class="cat-show">
+    <div class="cat-show-head"><span class="cs-line"></span><span class="cs-title">Categories • ক্যাটাগরি</span><span class="cs-line"></span></div>
+    <div class="icon-grid" id="catIconGrid"></div>
+  </section>
   <section class="block" id="featured">
     <div class="sec-head"><h2>Featured Ads <span class="bn">• ফিচার্ড বিজ্ঞাপন</span></h2></div>
     <div class="list-grid" id="featGrid"></div>
@@ -222,16 +225,16 @@ gtag('config', 'G-D207HZJB77');
   function setCategory(cat, sub) {
     state.cat = cat;
     state.sub = sub || 'all';
-    renderNav(); renderSubFilter(); renderList();
+    renderIconGrid(); renderSubFilter(); renderList();
     document.getElementById('listings').scrollIntoView({ behavior: 'smooth' });
   }
-  function renderNav() {
-    var html = '<button data-cat="all" class="' + (state.cat === 'all' ? 'on' : '') + '">All — সব</button>';
+  function renderIconGrid() {
+    var html = '<button type="button" data-cat="all" class="tile' + (state.cat === 'all' ? ' on' : '') + '"><span class="med"><span class="med-all">সব</span></span><span class="tl">All</span><small>সব ক্যাটাগরি</small></button>';
     HB.CATEGORIES.forEach(function (c) {
-      html += '<button data-cat="' + c.id + '" class="' + (state.cat === c.id ? 'on' : '') + '">' + esc(c.name) + '</button>';
+      html += '<button type="button" data-cat="' + c.id + '" class="tile' + (state.cat === c.id ? ' on' : '') + '"><span class="med">' + HB.catIcon(c.id) + '</span><span class="tl">' + esc(c.name) + '</span><small>' + esc(c.bn) + '</small></button>';
     });
-    $('catNav').innerHTML = html;
-    Array.prototype.forEach.call($('catNav').querySelectorAll('button'), function (b) {
+    $('catIconGrid').innerHTML = html;
+    Array.prototype.forEach.call($('catIconGrid').querySelectorAll('button'), function (b) {
       b.addEventListener('click', function () { setCategory(b.getAttribute('data-cat')); });
     });
   }
@@ -325,10 +328,10 @@ gtag('config', 'G-D207HZJB77');
       b.classList.toggle('on', b.getAttribute('data-cond') === 'all');
     });
     cascade.clear();
-    renderNav(); renderSubFilter(); renderList();
+    renderIconGrid(); renderSubFilter(); renderList();
   }
   function start() {
-    renderNav();
+    renderIconGrid();
     renderSubFilter(); renderFeatured(); renderList(); renderStats(); renderFooterCats(); refreshLocUI();
   }
 
