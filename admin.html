@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="logo.png">
+<title>Admin • HatBazar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .admin-wrap{max-width:880px;margin:0 auto}
+  .login-card{max-width:420px;margin:26px auto}
+  .admin-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:18px 0 12px}
+  .admin-head h2{margin:0;font-family:"Archivo";font-size:21px}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}
+  .tabs button{border:1.5px solid var(--line,#d8e2d8);background:var(--card,#fff);color:var(--ink);border-radius:999px;padding:8px 16px;font-family:inherit;font-size:14.5px;font-weight:600;cursor:pointer;min-height:40px}
+  .tabs button.on{background:var(--green,#0b6b34);color:#fff;border-color:var(--green,#0b6b34)}
+  .tabs .cnt{background:#e9b93c;color:#3a2c00;border-radius:999px;padding:0 8px;font-size:12.5px;margin-left:5px}
+  .adcard{display:flex;gap:13px;background:var(--card,#fff);border:1px solid var(--line,#d8e2d8);border-radius:14px;padding:12px;margin-bottom:12px}
+  .adcard img.main{width:104px;height:104px;object-fit:cover;border-radius:10px;flex:none;background:#eef3ee}
+  .adcard .info{flex:1;min-width:0}
+  .adcard h3{margin:0 0 3px;font-size:16px}
+  .adcard .meta{font-size:13px;color:var(--muted);margin:2px 0}
+  .adcard .desc{font-size:13.5px;white-space:pre-line;margin:6px 0;color:var(--ink)}
+  .adcard .price{font-weight:700;color:var(--green,#0b6b34)}
+  .adcard .thumbs{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
+  .adcard .thumbs img{width:38px;height:38px;object-fit:cover;border-radius:6px}
+  .adcard .acts{display:flex;gap:8px;margin-top:9px;flex-wrap:wrap}
+  .adcard .acts button{border:0;border-radius:9px;padding:8px 15px;font-family:inherit;font-weight:700;font-size:14px;cursor:pointer;min-height:38px}
+  .btn-approve{background:#0b6b34;color:#fff}
+  .btn-reject{background:#fdecec;color:#a11;border:1.5px solid #e5b4b4 !important}
+  .btn-arch{background:#eef1ee;color:var(--ink);border:1.5px solid var(--line,#d8e2d8) !important}
+  .chip{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 8px;background:#fdf0cd;color:#6b5200;margin-left:6px;vertical-align:2px}
+  .sellerrow{background:var(--card,#fff);border:1px solid var(--line,#d8e2d8);border-radius:12px;padding:10px 13px;margin-bottom:9px;font-size:14.5px}
+  .empty-note{background:var(--card,#fff);border:1.5px dashed var(--line,#d8e2d8);border-radius:14px;padding:26px;text-align:center;color:var(--muted)}
+  @media(max-width:560px){.adcard{flex-direction:column}.adcard img.main{width:100%;height:180px}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D207HZJB77"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-D207HZJB77');
+</script>
+</head>
+<body>
+
+<div class="topstrip">
+  <div class="wrap">
+    <div>সারা বাংলাদেশে কেনাবেচা — <a href="index.html#listings">সব বিজ্ঞাপন দেখুন</a></div>
+    <div>EN | <span lang="bn">বাংলা</span></div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap header-in">
+    <a class="logo" href="index.html" aria-label="HatBazar home" style="text-decoration:none">
+      <img class="logo-img" src="logo.png" alt="HatBazar" width="42" height="42">
+      <span class="logo-text"><b>Hat<em>Bazar</em></b><small>হাটবাজার • Buy &amp; Sell BD</small></span>
+    </a>
+    <form class="searchbar" action="index.html" method="get" role="search">
+      <input name="q" type="search" placeholder="যা খুঁজছেন লিখুন… Search…" aria-label="Search ads">
+      <button class="go" type="submit" aria-label="Search">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+        <span>Search</span>
+      </button>
+    </form>
+    <div class="header-links">
+      <a href="seller.html" style="font-size:14.5px;font-weight:600;color:var(--ink);padding:8px 10px;min-height:44px;display:inline-flex;align-items:center">♡ My Ads</a>
+      <a href="https://m.me/TandiaMall" target="_blank" rel="noopener" style="font-size:14.5px;font-weight:600;color:var(--ink);padding:8px 10px;min-height:44px;display:inline-flex;align-items:center">Chats</a>
+    </div>
+    <a class="post-btn" href="post.html" style="display:inline-flex;align-items:center;text-decoration:none">+ POST YOUR AD</a>
+  </div>
+  <nav class="catnav"><div class="wrap" id="catNav"></div></nav>
+</header>
+
+<main class="wrap admin-wrap">
+  <div class="page-card login-card" id="loginCard">
+    <div class="card-head">🔐 HatBazar Admin</div>
+    <form class="post" id="loginForm">
+      <label>Email<input id="aEmail" type="email" value="tandia.store@gmail.com" autocomplete="username"></label>
+      <label>Password<input id="aPass" type="password" autocomplete="current-password" placeholder="আপনার admin password"></label>
+      <div class="form-err" id="loginErr"></div>
+      <button class="btn btn-green" type="submit" id="loginBtn" style="width:100%">Login করুন</button>
+      <small style="color:var(--muted)">এই পেজ শুধুমাত্র HatBazar টিমের জন্য। Login ছাড়া এখানে কিছুই দেখা বা করা যায় না।</small>
+    </form>
+  </div>
+
+  <div id="panel" style="display:none">
+    <div class="admin-head">
+      <h2>🛠️ Admin Panel <small id="adminWho" style="font-size:13px;color:var(--muted);font-family:inherit"></small></h2>
+      <button class="btn btn-line" id="logoutBtn" type="button">Logout</button>
+    </div>
+    <div class="tabs" id="tabs">
+      <button type="button" data-tab="pending" class="on">Pending — যাচাই বাকি<span class="cnt" id="cntPending">…</span></button>
+      <button type="button" data-tab="live">Live<span class="cnt" id="cntLive">…</span></button>
+      <button type="button" data-tab="closed">বন্ধ (Rejected/Archived)<span class="cnt" id="cntClosed">…</span></button>
+      <button type="button" data-tab="sellers">Sellers</button>
+    </div>
+    <div id="adminMsg" style="margin-bottom:10px"></div>
+    <div id="listWrap"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">
+      <div class="foot-logo"><img class="foot-logo-img" src="logo.png" alt="HatBazar logo">Hat<em>Bazar</em></div>
+      <p>বাংলাদেশের কেনাবেচার হাট — a classifieds marketplace covering all 8 divisions, 64 districts, 494 upazilas &amp; 4,540 unions of Bangladesh.</p>
+      <div class="foot-chips"><span>🚚 সারা দেশে Cash on Delivery</span><span>🛡️ Verified Seller সুবিধা</span><span>🎯 Union পর্যন্ত location</span></div>
+      <p>🛡️ Founding Verified Seller: <b style="color:#fff">Tandia Mall</b> — saree, borka, three-piece &amp; bags. Order through HatBazar with Cash on Delivery, delivered all over Bangladesh.</p>
+    </div>
+    <div><h4>Categories — ক্যাটাগরি</h4><ul class="foot-cats" id="footCats">
+      <li><a class="flink" href="index.html">Mobile Phones • মোবাইল</a></li>
+      <li><a class="flink" href="index.html">Electronics • ইলেকট্রনিক্স</a></li>
+      <li><a class="flink" href="index.html">Vehicles • যানবাহন</a></li>
+      <li><a class="flink" href="index.html">Property • প্রপার্টি</a></li>
+      <li><a class="flink" href="index.html">Fashion • ফ্যাশন</a></li>
+      <li><a class="flink" href="index.html">Home & Living • ঘর-সংসার</a></li>
+      <li><a class="flink" href="index.html">Jobs • চাকরি</a></li>
+      <li><a class="flink" href="index.html">Services • সার্ভিস</a></li>
+      <li><a class="flink" href="index.html">Agriculture • কৃষি</a></li>
+      <li><a class="flink" href="index.html">Food & Grocery • খাবার ও মুদি</a></li>
+      <li><a class="flink" href="index.html">Babies & Kids • শিশু ও বাচ্চা</a></li>
+      <li><a class="flink" href="index.html">Business & Wholesale • ব্যবসা ও পাইকারি</a></li>
+      <li><a class="flink" href="index.html">Health & Beauty • স্বাস্থ্য ও সৌন্দর্য</a></li>
+      <li><a class="flink" href="index.html">Hobbies & Sports • শখ ও খেলা</a></li>
+      <li><a class="flink" href="index.html">Education • শিক্ষা</a></li>
+      <li><a class="flink" href="index.html">Everything Else • অন্যান্য</a></li>
+    </ul></div>
+    <div><h4>HatBazar</h4><ul>
+      <li><a class="flink" href="index.html">All Ads — সব বিজ্ঞাপন</a></li>
+      <li><a class="flink" href="post.html">Post Your Ad — ফ্রি</a></li>
+      <li><a class="flink" href="seller.html">My Ads — আমার বিজ্ঞাপন</a></li>
+      <li><a class="flink" href="seller-centre.html">Seller Centre — বিক্রেতাদের জন্য</a></li>
+      <li><a class="flink" href="seller-centre.html">Verified Seller হোন</a></li>
+      <li><a class="flink" href="https://m.me/TandiaMall" target="_blank" rel="noopener">Help &amp; contact — Messenger</a></li>
+    </ul></div>
+    <div><h4>নিরাপদ কেনাবেচা</h4><ul class="foot-safe">
+      <li>✓ পণ্য হাতে পেয়ে টাকা দিন — কোনো advance নয়</li>
+      <li>✓ দরজায় পণ্য চেক করে, তারপর payment</li>
+      <li>✓ Verified Seller-দের order HatBazar নিজে সামলায়</li>
+      <li>✓ সমস্যা হলে Messenger-এ জানান — আমরাই সমাধান করব</li>
+    </ul></div>
+    <div class="foot-bottom"><span>© 2026 HatBazar — Made in Bangladesh 🇧🇩</span><span>প্রতিটা বিজ্ঞাপন প্রকাশের আগে যাচাই করা হয়</span><span>সারা দেশে Cash on Delivery 🚚</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<nav class="mnav" aria-label="Mobile">
+  <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11 12 3l9 8v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+  <a href="index.html#listings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>Search</a>
+  <a class="post-mid" href="post.html"><span class="fab">+</span>Post Ad</a>
+  <a href="seller.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.7-10-9.3C.4 8.6 2.3 5 5.7 5c2 0 3.4 1.1 4.3 2.4h4C15 6.1 16.4 5 18.4 5c3.4 0 5.3 3.6 3.6 6.7C19.5 16.3 12 21 12 21z" transform="scale(.92) translate(1,1)"/></svg>My Ads</a>
+  <a href="https://m.me/TandiaMall" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z"/></svg>Chats</a>
+</nav>
+
+<script src="assets/config.js"></script>
+<script src="assets/data.js"></script>
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { return String(t == null ? '' : t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function fmt(n) { return '৳' + Number(n || 0).toLocaleString('en-IN'); }
+
+  /* header/footer category links (static, no app.js needed) */
+  var CATS = window.HB_CATEGORIES || [];
+  $('catNav').innerHTML = '<a href="index.html">All — সব</a>' + CATS.map(function (c) {
+    return '<a href="index.html?cat=' + c.id + '">' + esc(c.name) + '</a>';
+  }).join('');
+  var fcEl = $('footCats');
+  if (fcEl && !fcEl.children.length) fcEl.innerHTML = CATS.map(function (c) {
+    return '<li><a class="flink" href="index.html?cat=' + c.id + '">' + esc(c.name) + ' • ' + esc(c.bn) + '</a></li>';
+  }).join('');
+
+  var CFG = window.HB_CONFIG, BASE = CFG.SUPABASE_URL, ANON = CFG.SUPABASE_ANON_KEY;
+  var LS_KEY = 'hb_admin_session_v1';
+  var session = null, curTab = 'pending';
+
+  function saveSession(s) { session = s; try { localStorage.setItem(LS_KEY, JSON.stringify(s)); } catch (e) {} }
+  function loadSession() { try { var s = JSON.parse(localStorage.getItem(LS_KEY) || 'null'); if (s && s.access_token) session = s; } catch (e) {} }
+  function clearSession() { session = null; try { localStorage.removeItem(LS_KEY); } catch (e) {} }
+
+  function api(path, opts, token) {
+    opts = opts || {};
+    var headers = { apikey: ANON, Authorization: 'Bearer ' + (token || ANON), 'Content-Type': 'application/json' };
+    if (opts.headers) for (var k in opts.headers) headers[k] = opts.headers[k];
+    opts.headers = headers;
+    return fetch(BASE + path, opts).then(function (r) {
+      return r.text().then(function (t) {
+        var data = null; try { data = t ? JSON.parse(t) : null; } catch (e) {}
+        if (!r.ok) { var err = new Error((data && (data.error_description || data.msg || data.message)) || ('HTTP ' + r.status)); err.status = r.status; throw err; }
+        return data;
+      });
+    });
+  }
+  function rest(path, opts) { return api('/rest/v1/' + path, opts, session && session.access_token); }
+
+  function refreshSession() {
+    if (!session || !session.refresh_token) return Promise.reject(new Error('no session'));
+    return api('/auth/v1/token?grant_type=refresh_token', { method: 'POST', body: JSON.stringify({ refresh_token: session.refresh_token }) }, ANON)
+      .then(function (d) { saveSession({ access_token: d.access_token, refresh_token: d.refresh_token, expires_at: Date.now() + (d.expires_in || 3600) * 1000, email: d.user && d.user.email }); });
+  }
+  function withAuth(fn) {
+    if (session && session.expires_at && session.expires_at - Date.now() < 60000) {
+      return refreshSession().then(fn, function () { showLogin('Session শেষ — আবার login করুন।'); throw new Error('expired'); });
+    }
+    return fn();
+  }
+
+  function showLogin(msg) {
+    clearSession();
+    $('panel').style.display = 'none';
+    $('loginCard').style.display = '';
+    if (msg) { var e = $('loginErr'); e.textContent = msg; e.classList.add('show'); }
+  }
+  function showPanel() {
+    $('loginCard').style.display = 'none';
+    $('panel').style.display = '';
+    $('adminWho').textContent = session && session.email ? '(' + session.email + ')' : '';
+    loadCounts();
+    loadTab(curTab);
+  }
+
+  $('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var err = $('loginErr'); err.classList.remove('show');
+    var btn = $('loginBtn'); btn.disabled = true; btn.textContent = 'Login হচ্ছে…';
+    api('/auth/v1/token?grant_type=password', { method: 'POST', body: JSON.stringify({ email: $('aEmail').value.trim(), password: $('aPass').value }) }, ANON)
+      .then(function (d) {
+        saveSession({ access_token: d.access_token, refresh_token: d.refresh_token, expires_at: Date.now() + (d.expires_in || 3600) * 1000, email: d.user && d.user.email });
+        btn.disabled = false; btn.textContent = 'Login করুন';
+        showPanel();
+      })
+      .catch(function (ex) {
+        btn.disabled = false; btn.textContent = 'Login করুন';
+        err.textContent = 'Login হয়নি — ' + (ex.status === 400 ? 'email বা password ভুল।' : esc(ex.message));
+        err.classList.add('show');
+      });
+  });
+  $('logoutBtn').addEventListener('click', function () { showLogin(); });
+
+  function msg(html, ok) {
+    $('adminMsg').innerHTML = html ? '<div style="background:' + (ok === false ? '#fdecec' : '#e7f4ea') + ';border-radius:9px;padding:9px 13px;font-size:14px">' + html + '</div>' : '';
+  }
+
+  function loadCounts() {
+    withAuth(function () { return rest('ads?select=status', {}); })
+      .then(function (rows) {
+        var c = { pending: 0, live: 0, closed: 0 };
+        (rows || []).forEach(function (r) { if (r.status === 'pending') c.pending++; else if (r.status === 'live') c.live++; else c.closed++; });
+        $('cntPending').textContent = c.pending; $('cntLive').textContent = c.live; $('cntClosed').textContent = c.closed;
+        if (c.pending === 0 && c.live === 0 && c.closed === 0) msg('⚠️ কোনো ad-ই দেখা যাচ্ছে না — সম্ভবত admin permission (fix-10 SQL) এখনো চালানো হয়নি, কিংবা এই email-এ admin user তৈরি হয়নি।', false);
+      })
+      .catch(function () { /* counts are best-effort */ });
+  }
+
+  function adCard(ad) {
+    var photos = Array.isArray(ad.photos) ? ad.photos : [];
+    var thumbs = photos.length > 1 ? '<div class="thumbs">' + photos.slice(0, 6).map(function (p) { return '<img src="' + esc(p) + '" alt="" loading="lazy">'; }).join('') + '</div>' : '';
+    var date = ad.created_at ? new Date(ad.created_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+    var acts = '';
+    if (ad.status === 'pending') acts = '<button class="btn-approve" data-act="live" data-id="' + ad.id + '">✓ Approve — Live করুন</button><button class="btn-reject" data-act="rejected" data-id="' + ad.id + '">✗ Reject</button>';
+    else if (ad.status === 'live') acts = '<a class="btn-arch" style="text-decoration:none;display:inline-flex;align-items:center;padding:8px 15px;border-radius:9px;font-weight:700;font-size:14px" href="ad.html?id=' + ad.id + '" target="_blank" rel="noopener">Ad দেখুন ↗</a><button class="btn-arch" data-act="archived" data-id="' + ad.id + '">Archive — সরিয়ে নিন</button>';
+    else acts = '<button class="btn-approve" data-act="pending" data-id="' + ad.id + '">↩ Pending-এ ফেরত নিন</button>';
+    var chip = ad.status !== 'pending' && ad.status !== 'live' ? '<span class="chip">' + esc(ad.status) + '</span>' : (ad.verified ? '<span class="chip">🛡️ VERIFIED</span>' : '');
+    return '<div class="adcard">' +
+      (photos.length ? '<img class="main" src="' + esc(photos[0]) + '" alt="" loading="lazy">' : '') +
+      '<div class="info"><h3>' + esc(ad.title) + chip + '</h3>' +
+      '<div class="meta"><span class="price">' + fmt(ad.price) + '</span> • ' + esc(ad.seller_name) + ' • ' + esc(ad.category || '') + (ad.subcategory ? ' / ' + esc(ad.subcategory) : '') + (date ? ' • ' + date : '') + '</div>' +
+      (ad.loc_label ? '<div class="meta">📍 ' + esc(ad.loc_label) + '</div>' : '') +
+      (ad.description ? '<div class="desc">' + esc(String(ad.description).slice(0, 260)) + '</div>' : '') +
+      thumbs + '<div class="acts">' + acts + '</div></div></div>';
+  }
+
+  function loadTab(tab) {
+    curTab = tab;
+    var btns = $('tabs').querySelectorAll('button');
+    for (var i = 0; i < btns.length; i++) btns[i].classList.toggle('on', btns[i].getAttribute('data-tab') === tab);
+    msg('');
+    $('listWrap').innerHTML = '<div class="empty-note">লোড হচ্ছে…</div>';
+    if (tab === 'sellers') {
+      withAuth(function () { return rest('sellers?select=*&order=created_at.desc', {}); })
+        .then(function (rows) {
+          if (!rows || !rows.length) { $('listWrap').innerHTML = '<div class="empty-note">কোনো seller পাওয়া যায়নি।</div>'; return; }
+          $('listWrap').innerHTML = rows.map(function (s) {
+            return '<div class="sellerrow"><b>' + esc(s.name) + '</b>' + (s.shop_name ? ' — ' + esc(s.shop_name) : '') +
+              '<br><span style="color:var(--muted);font-size:13.5px">📱 ' + esc(s.phone) + ' • ' + (s.type === 'verified' ? '🛡️ Verified Seller' : 'সাধারণ seller') +
+              (s.created_at ? ' • ' + new Date(s.created_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '') + '</span></div>';
+          }).join('');
+        })
+        .catch(function (ex) { $('listWrap').innerHTML = '<div class="empty-note">Seller list লোড হয়নি (' + esc(ex.message) + ')</div>'; });
+      return;
+    }
+    var filter = tab === 'pending' ? 'status=eq.pending' : tab === 'live' ? 'status=eq.live' : 'status=in.(rejected,archived)';
+    withAuth(function () { return rest('ads?select=*&' + filter + '&order=created_at.desc', {}); })
+      .then(function (rows) {
+        if (!rows || !rows.length) {
+          $('listWrap').innerHTML = '<div class="empty-note">' + (tab === 'pending' ? '🎉 কোনো pending ad নেই — সব যাচাই হয়ে গেছে।' : 'এখানে কোনো ad নেই।') + '</div>';
+          return;
+        }
+        $('listWrap').innerHTML = rows.map(adCard).join('');
+      })
+      .catch(function (ex) { $('listWrap').innerHTML = '<div class="empty-note">Ad লোড হয়নি (' + esc(ex.message) + ')<br>admin permission (fix-10 SQL) চালানো না থাকলে এমন হতে পারে।</div>'; });
+  }
+
+  $('tabs').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-tab]'); if (b) loadTab(b.getAttribute('data-tab'));
+  });
+  $('listWrap').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-act]'); if (!b || b.disabled) return;
+    var id = b.getAttribute('data-id'), act = b.getAttribute('data-act');
+    b.disabled = true; b.textContent = 'হচ্ছে…';
+    withAuth(function () {
+      return rest('ads?id=eq.' + encodeURIComponent(id), { method: 'PATCH', headers: { Prefer: 'return=minimal' }, body: JSON.stringify({ status: act }) });
+    }).then(function () {
+      msg('✓ হয়ে গেছে — ad #' + esc(id) + ' এখন <b>' + esc(act) + '</b>।', true);
+      loadCounts(); loadTab(curTab);
+    }).catch(function (ex) {
+      b.disabled = false;
+      msg('হয়নি (' + esc(ex.message) + ') — আবার চেষ্টা করুন।', false);
+    });
+  });
+
+  loadSession();
+  if (session && session.access_token) showPanel();
+})();
+</script>
+</body>
+</html>
